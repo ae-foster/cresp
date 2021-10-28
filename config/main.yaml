@@ -1,0 +1,93 @@
+defaults:
+  - _self_
+  - server: local
+  - model: ssl
+  - dataset: r2n2
+  - clf: default
+  - clf_optim: lbfgs
+  - critic: default
+  - trainer: default
+  - logger: csv
+  - enc: cat
+  - agg: mean
+  - self_attn: id
+  - obs_net: id
+  - enc_net: mlp
+  - dec: cat
+  - dec_net: mlp
+  - target_net: mlp
+  - cov_net: id
+  - optim: lars
+  - scheduler: rcosine
+  - checkpoint: val_loss
+
+# Run
+name: default
+seed: 0
+run: 0
+
+# Data
+dataset: r2n2  # choices=['sine', 'snooker', 'r2n2']
+fix_clf_train: False
+subsample: 0  # 1000
+
+# Sampling
+n_epochs: 100  # Number of training epochs
+batch_size: 128
+test_batch_size: 128
+n_views_train: 6
+n_views_test: 10
+
+# Model
+targeted: False  # choices=[True, False]
+temperature: 0.5
+representation_dim: 512 # This only applies to a ResNet18. The representation dimension cannot be set independently
+target_repr_dim: 512
+projection_dim: 128
+
+# Logging
+resume: True  # resume from checkpoint with this filename
+val_freq: 5  # ${n_epochs}
+clf_freq: 5  # Frequency to fit a linear clf with L-BFGS for testing. Not appropriate for large datasets. Set 0 to avoid classifier only training here
+debug: []  # list of debugging tools to be called
+debug_freq: 1
+
+# Machine
+precision: 32  # [16, 32]
+num_workers: 8  # Number of threads for data loaders
+num_gpus: 1  # Number of gpus (and cpus) for the data parallelisation with slurm
+
+# Paths
+paths:
+  base_dir: ${hydra:runtime.cwd}
+  ckpt: ckpt
+  logs: logs
+  data:  ${paths.base_dir}/data
+  experiments_dir_name: experiments
+  experiments: ${paths.base_dir}/${paths.experiments_dir_name}
+
+# Hydra
+hydra:
+  job:
+    config:
+      # configuration for the ${hydra.job.override_dirname} runtime variable
+      override_dirname:
+        exclude_keys: [name, server, run, resume, num_workers, num_gpus, val_freq, clf_freq, debug_freq, debug, logger, parallel_run]
+
+  run:
+    # Output directory for normal runs
+    dir: ./${paths.experiments_dir_name}/${name}/${hydra.job.override_dirname}/${run}
+  sweep:
+  #   # Output directory for sweep runs
+    dir: ./${paths.experiments_dir_name}/${name}/${hydra.job.override_dirname}
+    subdir: ${run}
+
+  job_logging:
+    formatters:
+      simple:
+        format: '[%(levelname)s] - %(message)s'
+    handlers:
+      file:
+        filename: run.log
+    root:
+      handlers: [console, file]

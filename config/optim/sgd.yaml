@@ -1,0 +1,6 @@
+base_lr: 1.0  # base learning rate, rescaled by batch_size/256
+object:
+  _target_: torch.optim.SGD
+  lr: ${eval:${optim.base_lr}*${batch_size}/256}
+  weight_decay: 1e-6
+  momentum: 0.9

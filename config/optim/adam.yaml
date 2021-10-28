@@ -1,0 +1,5 @@
+base_lr: 1e-4  # base learning rate, rescaled by batch_size/256
+object:
+  _target_: torch.optim.Adam
+  lr: ${eval:${optim.base_lr}*${batch_size}/256}
+  weight_decay: 1e-6

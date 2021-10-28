@@ -1,0 +1,7 @@
+name: lbfgs
+object:
+  _target_: torch.optim.LBFGS
+  lr: 1
+reg: 1e-3
+num_lbfgs_steps: 500
+batch_size: 128

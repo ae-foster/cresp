@@ -1,0 +1,4 @@
+latent_dim: ${where:${isequal:${targeted},True},${target_repr_dim},${representation_dim}}
+projection_dim: ${projection_dim}
+linear: False
+temperature: ${temperature}

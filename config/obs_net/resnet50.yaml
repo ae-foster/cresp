@@ -1,0 +1,5 @@
+_target_: src.architectures.ResNet
+block: 
+  _target_: hydra.utils.get_class
+  path: torchvision.models.resnet.Bottleneck
+layers: [3, 4, 6, 3]

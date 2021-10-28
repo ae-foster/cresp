@@ -1,0 +1,4 @@
+name: channel
+_target_: src.models.ChannelEnc
+hidden_dim: []
+num_channels: 1

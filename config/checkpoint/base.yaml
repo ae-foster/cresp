@@ -1,0 +1,9 @@
+_target_: utils.ModelCheckpoint
+dirpath: ${paths.ckpt} 
+monitor: ???
+mode: ???
+verbose: False
+save_last: True
+save_top_k: 1
+save_weights_only: False
+filename: best

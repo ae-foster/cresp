@@ -1,0 +1,3 @@
+name: simple
+_target_: src.models.SimpleEnc
+num_channels: 0

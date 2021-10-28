@@ -1,0 +1,16 @@
+torch==1.6.0
+gpytorch==1.2.1
+numpy==1.18.1
+torchvision>=0.4.0
+tabulate==0.8.8
+Pillow>=7.1.1
+tqdm==4.45.0
+pytorch-lightning==1.1.6
+submitit
+git+https://github.com/omry/omegaconf.git@e7f7db4c60509de068990b5af9ec30d29f1369be#egg=omegaconf
+git+https://github.com/facebookresearch/hydra.git@f17eef4391ba18e4fcbb835fc175cbf180c28b7f#egg=hydra-core
+hydra-submitit-launcher==1.0.1
+matplotlib==3.3.3
+wandb==0.10.18
+seaborn==0.11.1
+umap-learn==0.5.1

@@ -1,0 +1,8 @@
+# @package _global_
+defaults:
+  - override /hydra/launcher: submitit_local
+
+hydra:
+  launcher:
+    submitit_folder: ${hydra.sweep.dir}/.submitit/%j
+    timeout_min: 840

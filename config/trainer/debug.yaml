@@ -1,0 +1,14 @@
+# trainer args for debugging model
+_target_: pytorch_lightning.Trainer
+limit_train_batches: 2
+limit_val_batches: 1
+limit_test_batches: 1
+check_val_every_n_epoch: 1
+progress_bar_refresh_rate: 1
+# profiler: "simple"  # use profiler to print execution time profiling after training ends
+weights_summary: "full"
+max_epochs: 2
+deterministic: True
+num_sanity_val_steps: 0
+log_every_n_steps: 1
+flush_logs_every_n_steps: 1

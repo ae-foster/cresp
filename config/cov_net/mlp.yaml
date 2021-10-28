@@ -1,0 +1,6 @@
+_target_: src.architectures.MLP
+in_dim: ${dataset.num_covariates}  # x_dim
+hidden_dim: [32]
+out_dim: 10
+batch_norm: False
+start_dim: 2

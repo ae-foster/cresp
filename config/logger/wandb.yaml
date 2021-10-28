@@ -1,0 +1,8 @@
+wandb:
+    _target_: utils.WandbLogger
+    save_dir: ${paths.logs}
+    name: ${str:${run}}
+    group: ${name}_${hydra:job.override_dirname}
+    entity: ???
+    project: ???
+    offline: False

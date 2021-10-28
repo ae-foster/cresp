@@ -1,0 +1,8 @@
+name: ${enc.name}
+data_dim: ${where:${isequal:${obs_net._target_},torch.nn.Identity},${prod:${dataset.shape}},${target_repr_dim}}  # multiply channel, height, width
+cov_dim: ${where:${isequal:${enc.name},cat},${dataset.num_covariates},0}  # add cov dim if enc=cat
+_target_: src.architectures.MLP
+in_dim: ${eval:${enc_net.data_dim}+${enc_net.cov_dim}}  # x_dim + context_dim
+hidden_dim: [512]
+out_dim: ${representation_dim}
+batch_norm: False

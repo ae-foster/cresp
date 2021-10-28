@@ -1,0 +1,2 @@
+name: ssl
+_target_: src.models.LightningSSL

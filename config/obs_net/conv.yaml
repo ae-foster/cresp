@@ -1,0 +1,2 @@
+_target_: src.architectures.ConvEncoder
+ngf: ${representation_dim}

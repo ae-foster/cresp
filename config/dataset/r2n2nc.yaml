@@ -1,0 +1,23 @@
+name: R2N2
+limit_num_views: 24
+shape: [3, 64, 64]
+num_classes: 13
+num_covariates: 15
+split: [0.6, 0.2, 0.2]
+criterion:
+  _target_: torch.nn.CrossEntropyLoss
+targeted: False
+
+object:
+  _target_: src.dataset.R2N2
+  root: ${paths.data}/ShapeNetRendering
+  subsample: ${subsample}
+  crop_size: 64
+  crop_area: [0.08, 1.]
+  crop_ratio: [1., 1.]
+  transform: transforms.Compose([transforms.ToTensor(), transforms.ConvertImageDtype(torch.float32), transforms.Normalize((0.0024, 0.0023, 0.0022), (.5, .5, .5))])
+  cov_transform: Normalize1d((9.3945e-04,  7.4498e-05, -1.8015e-04, -2.3147e-04, -8.4487e-05, 4.1898e-04,  1.7830e-03,  1.8654e-02,  4.6655e-01,  4.7316e-01,  2.2673e+00,  2.2673e+00,  2.3658e+02,  1.6068e+00,  1.6002e+00), (1.6541e-02, 1.6364e-02, 1.6913e-02, 1.6506e-02, 1.6710e-02, 1.6148e-02, 9.1863e-05, 2.0099e-03, 4.5502e-01, 4.5666e-01, 6.2650e-01, 6.2650e-01,  1.1641e+02, 3.3093e-01, 3.3355e-01))
+
+collator:
+  _target_: hydra.utils.get_method
+  path: src.dataset.random_views_collate_fn

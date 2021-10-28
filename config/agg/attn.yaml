@@ -1,0 +1,8 @@
+attention: manhattan
+_target_: src.models.CrossAttentionAgg
+attender:
+  _target_: src.architectures.get_attender
+  attention: ${agg.attention}
+  kq_size: ${dataset.num_covariates}
+  value_size: ${representation_dim}
+  out_size: ${representation_dim}

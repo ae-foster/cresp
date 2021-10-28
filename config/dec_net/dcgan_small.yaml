@@ -1,0 +1,4 @@
+_target_: src.architectures.DCGANSmall
+h_dim: ${eval:${dataset.num_covariates}+${representation_dim}} # x_dim + embedding_dim
+num_channels: 3
+ngf: 64

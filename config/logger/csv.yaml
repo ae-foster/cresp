@@ -1,0 +1,4 @@
+csv:
+  _target_: utils.CSVLogger
+  save_dir: logs
+  name: ""

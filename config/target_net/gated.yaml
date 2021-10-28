@@ -1,0 +1,8 @@
+name: gated
+_target_: src.models.Gated
+in_dim: ${eval:${dataset.num_covariates}+${representation_dim}} # x_dim + embedding_dim
+representation_dim: ${target_repr_dim}
+gating: True
+active: sigmoid
+pointwise: True
+extra_layer: False

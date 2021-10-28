@@ -1,0 +1,32 @@
+shape: [1]
+num_classes: 3
+num_covariates: 1
+split: [0.8, 0.1, 0.1]
+criterion:
+  _target_: torch.nn.MSELoss
+targeted: False
+
+period: [8, 8]
+amplitude: [0.5, 2.]
+phase: ${pi:1}
+noise: bimodal
+eps: 0.
+N: 22000
+
+object:
+  _target_: src.dataset.SineFunc
+  N: ${dataset.N}
+  period: ${dataset.period}
+  amplitude: ${dataset.amplitude}
+  noise: 
+    _target_: hydra.utils.get_method
+    path: src.dataset.${dataset.noise}
+  phase: ${dataset.phase}
+  epsilon: ${dataset.eps}
+
+collator: 
+  _target_: utils.partialfunction
+  func:
+    _target_: hydra.utils.get_method
+    path: src.dataset.one_dim_collate_fn
+  bound: 5

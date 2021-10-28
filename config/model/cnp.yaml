@@ -1,0 +1,4 @@
+name: cnp
+_target_: src.models.LightningCNP
+min_cov: 0.01
+covariance_activation_function: diagonal_softplus

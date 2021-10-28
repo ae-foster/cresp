@@ -1,0 +1,6 @@
+tensorboard:
+    _target_: utils.TensorBoardLogger
+    save_dir: ""
+    name: logs
+    version: ./
+    default_hp_metric: False

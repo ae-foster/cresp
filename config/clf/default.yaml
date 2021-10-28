@@ -1,0 +1,8 @@
+only: False
+ckpt: last
+prop: 1.
+scan: False
+prop_scan_array: [0.01, 0.02, 0.04, 0.1, 0.2, 0.4, 1]
+reg_weight_array: [1e-1, 1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7]
+
+optim: ${clf_optim}

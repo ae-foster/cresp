@@ -1,0 +1,2 @@
+_target_: torch.nn.BatchNorm1d
+num_features: ${dataset.num_covariates}  # x_dim

@@ -1,0 +1,5 @@
+_target_: src.architectures.SelfAttention
+x_dim: ${representation_dim}
+out_dim: ${representation_dim}
+n_attn_layers: 2
+attention: "transformer"

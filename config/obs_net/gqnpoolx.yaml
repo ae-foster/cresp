@@ -1,0 +1,4 @@
+_target_: src.architectures.GQN_Pool
+representation_dim: ${representation_dim}
+covariate_dim: 0
+num_channels: 0

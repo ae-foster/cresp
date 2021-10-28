@@ -1,0 +1,32 @@
+# @package _global_
+
+defaults:
+  - override /dataset: snooker
+  - override /optim: adam
+  - override /scheduler: rcosine
+  - override /obs_net: resnet18
+  - override /enc_net: gated
+  - override /dec_net: dcgan_small
+  - override /target_net: mlp
+  - override /checkpoint: val_clf_acc
+
+target_net:
+  hidden_dim: [512, 512, 512]
+
+optim:
+  base_lr: 2e-3
+
+targeted: True
+target_repr_dim: 512
+representation_dim: 512
+projection_dim: 128
+batch_size: 256
+test_batch_size: 256
+n_views_train: 6
+n_test_train: 10
+
+val_freq: 10
+clf_freq: 10
+n_epochs: 200
+debug_freq: ${eval:${n_epochs}-1}
+debug: [rec]

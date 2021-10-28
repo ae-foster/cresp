@@ -1,0 +1,9 @@
+name: sgd
+object:
+  _target_: torch.optim.SGD
+  lr: 1e-3  # learning rate
+  momentum: 0.9  # SGD momentum
+  weight_decay: 1e-6  # Weight decay on the linear classifier
+  nesterov: True  # Turn on Nesterov style momentum
+batch_size: 128  # 512  # Training batch size
+num_epochs: 90  # Number of training epochs

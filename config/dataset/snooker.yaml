@@ -1,0 +1,28 @@
+shape: [3, 28, 28]
+num_classes: 2 # dim
+num_covariates: 1
+split: [15000, 3000, 20000]
+criterion:
+  _target_: torch.nn.CrossEntropyLoss
+targeted: True
+
+N: 38000
+speed: 0.4
+sigma: 0.15
+inf: False
+
+object:
+  _target_: src.dataset.Snooker
+  N: ${dataset.N}
+  speed: ${dataset.speed}
+  sigma: ${dataset.sigma}
+  inf: ${dataset.inf}
+  w: 28
+  col: rgb
+
+collator:
+  _target_: utils.partialfunction
+  func:
+    _target_: hydra.utils.get_method
+    path: src.dataset.one_dim_collate_fn
+  bound: [0., 1.]

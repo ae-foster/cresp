@@ -1,0 +1,23 @@
+# @package _global_
+
+defaults:
+  - override /enc: cat
+  - override /enc_net: gated
+  - override /obs_net: conv
+  - override /dec_net: conv
+  - override /target_net: gated
+  - override /self_attn: 'on'
+
+
+optim:
+  base_lr: 1e-1
+
+targeted: False
+batch_size: 512
+test_batch_size: 512
+n_views_train: 6
+n_test_train: 10
+val_freq: 4
+clf_freq: 4
+
+num_gpus: 2

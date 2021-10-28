@@ -1,0 +1,3 @@
+_target_: src.architectures.DCGAN
+nz: ${eval:${dataset.num_covariates}+${representation_dim}} # x_dim + embedding_dim
+ngf: 64

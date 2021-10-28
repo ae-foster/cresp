@@ -1,0 +1,38 @@
+# @package _global_
+
+defaults:
+  - override /dataset: sine
+  - override /optim: adam
+  - override /scheduler: cosine
+  - override /enc_net: mlp
+  - override /dec_net: mlp
+  - override /self_attn: 'on'
+
+dec_net:
+  hidden_dim: [512,512,512]
+enc_net:
+  hidden_dim: [512,512,512]
+
+clf:
+  reg: 1e-6
+
+optim:
+  base_lr: 3e-4
+
+dataset:
+  eps: 2.0
+
+temperature: 0.5
+targeted: False
+n_epochs: 200
+batch_size: 256
+test_batch_size: 512
+n_views_train: 10
+n_views_test: 20
+representation_dim: 512
+projection_dim: 128
+
+val_freq: 10
+clf_freq: 10
+debug_freq: ${eval:${n_epochs}-1}
+debug: [rec_1d]

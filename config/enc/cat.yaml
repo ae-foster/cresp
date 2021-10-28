@@ -1,0 +1,3 @@
+name: cat
+_target_: src.models.CatEnc
+num_channels: 0

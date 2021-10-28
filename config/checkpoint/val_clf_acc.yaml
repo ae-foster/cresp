@@ -1,0 +1,5 @@
+defaults:
+  - base
+
+monitor: val/clf/acc
+mode: max

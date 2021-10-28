@@ -1,0 +1,4 @@
+defaults:
+    - csv.yaml
+    - tensorboard.yaml
+    - wandb.yaml

@@ -1,0 +1,6 @@
+_target_: src.architectures.ImgMLPGen
+in_dim: ${eval:${dataset.num_covariates}+${representation_dim}} # x_dim + embedding_dim
+out_shape: ${dataset.shape}
+hidden_dim: [512]
+batch_norm: False
+start_dim: 2
